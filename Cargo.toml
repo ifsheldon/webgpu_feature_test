@@ -8,6 +8,13 @@ resolver = "2"
 
 [dependencies]
 clap = "3.0.0-beta.4"
+crevice = "0.6.0"
+winit = { version = "0.25", features = ["web-sys"] }
+wgpu = { version = "0.10", path = "../wgpu/wgpu" }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+futures = "0.3"
+env_logger = "0.7"
 
 [target.'cfg(target_arch = "wasm32")'.dependencies]
 # for building examples
@@ -16,5 +23,3 @@ web-sys = { version = "0.3.53" }
 bytemuck = { version = "1.5", features = ["derive"] }
 console_log = "0.2.0"
 console_error_panic_hook = "0.1.6"
-wgpu = { version = "0.10", path = "../wgpu/wgpu" }
-winit = { version = "0.25", features = ["web-sys"] }
